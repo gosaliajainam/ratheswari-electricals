@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaBolt } from 'react-icons/fa';
+import logoImg from '../assets/logo.png';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -31,13 +31,7 @@ const Navbar = () => {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="container">
         <Link to="/" className="nav-logo">
-          <div className="nav-logo-icon">
-            <FaBolt />
-          </div>
-          <div className="nav-logo-text">
-            <h3>Ratheswari Electricals</h3>
-            <span>Pvt Ltd</span>
-          </div>
+          <img src={logoImg} alt="Ratheswari Electricals Pvt Ltd" className="nav-logo-img" />
         </Link>
 
         <div className={`nav-links ${menuOpen ? 'open' : ''}`}>

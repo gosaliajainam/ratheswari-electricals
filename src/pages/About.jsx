@@ -8,10 +8,10 @@ import {
 import CounterSection from '../components/CounterSection';
 
 const pillars = [
-  { icon: <FaCogs />, title: 'Skill', sanskrit: 'कौशलम्', desc: 'Qualified technicians and experienced professionals.' },
-  { icon: <FaUsers />, title: 'Organization', sanskrit: 'संगठनम्', desc: 'Structured planning and systematic execution.' },
-  { icon: <FaHandshake />, title: 'Service', sanskrit: 'सेवा', desc: 'Prompt response and customer-focused solutions.' },
-  { icon: <FaShieldAlt />, title: 'Trust', sanskrit: 'विश्वासः', desc: 'Transparent work practices and long-term reliability.' },
+  { icon: <FaCogs />, title: 'Skill', subtitle: 'Skill & Expertise', desc: 'Qualified technicians and experienced professionals.' },
+  { icon: <FaUsers />, title: 'Organization', subtitle: 'Structured Work', desc: 'Structured planning and systematic execution.' },
+  { icon: <FaHandshake />, title: 'Service', subtitle: 'Customer First', desc: 'Prompt response and customer-focused solutions.' },
+  { icon: <FaShieldAlt />, title: 'Trust', subtitle: 'Reliable & Transparent', desc: 'Transparent work practices and long-term reliability.' },
 ];
 
 const strengths = [
@@ -96,8 +96,8 @@ const About = () => {
       <section className="section identity-section">
         <div className="container">
           <div className="identity-motto" data-aos="fade-up">
-            <p className="sanskrit">कौशलम् संगठनम् सेवा विश्वासः अस्माकं परिचयः।</p>
-            <p className="english">Skill &bull; Organization &bull; Service &bull; Trust</p>
+            <p className="english-motto">Skill &bull; Organization &bull; Service &bull; Trust</p>
+            <p className="english">Our Core Identity & Guiding Principles</p>
           </div>
 
           <div className="section-title" data-aos="fade-up">
@@ -116,7 +116,7 @@ const About = () => {
               >
                 <div className="pillar-icon">{pillar.icon}</div>
                 <h3 style={{ color: '#1A1A2E' }}>{pillar.title}</h3>
-                <p className="sanskrit-text">{pillar.sanskrit}</p>
+                <p className="pillar-subtitle">{pillar.subtitle}</p>
                 <p style={{ color: '#6C757D' }}>{pillar.desc}</p>
               </div>
             ))}
