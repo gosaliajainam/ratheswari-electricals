@@ -22,10 +22,10 @@ const services = [
 ];
 
 const pillars = [
-  { icon: <FaCogs />, title: 'Technical Skill', sanskrit: 'कौशलम्', desc: 'Qualified technicians and experienced professionals' },
-  { icon: <FaUsers />, title: 'Organized Execution', sanskrit: 'संगठनम्', desc: 'Structured planning and systematic execution' },
-  { icon: <FaHandshake />, title: 'Dedicated Service', sanskrit: 'सेवा', desc: 'Prompt response and customer-focused solutions' },
-  { icon: <FaShieldAlt />, title: 'Customer Trust', sanskrit: 'विश्वासः', desc: 'Transparent work practices and long-term reliability' },
+  { icon: <FaCogs />, title: 'Technical Skill', subtitle: 'Skill & Expertise', desc: 'Qualified technicians and experienced professionals' },
+  { icon: <FaUsers />, title: 'Organized Execution', subtitle: 'Structured Work', desc: 'Structured planning and systematic execution' },
+  { icon: <FaHandshake />, title: 'Dedicated Service', subtitle: 'Customer First', desc: 'Prompt response and customer-focused solutions' },
+  { icon: <FaShieldAlt />, title: 'Customer Trust', subtitle: 'Reliable & Transparent', desc: 'Transparent work practices and long-term reliability' },
 ];
 
 const strengths = [
@@ -53,8 +53,8 @@ const Home = () => {
             <h1>
               <span>Ratheswari</span> Electricals<br />Pvt Ltd
             </h1>
-            <p className="hero-sanskrit">
-              कौशलम् संगठनम् सेवा विश्वासः अस्माकं परिचयः।
+            <p className="hero-tagline">
+              Skill &bull; Organization &bull; Service &bull; Trust
             </p>
             <p>
               Complete Annual Maintenance & Technical Service Solutions for
@@ -163,7 +163,7 @@ const Home = () => {
               >
                 <div className="pillar-icon">{pillar.icon}</div>
                 <h3>{pillar.title}</h3>
-                <p className="sanskrit-text">{pillar.sanskrit}</p>
+                <p className="pillar-subtitle">{pillar.subtitle}</p>
                 <p>{pillar.desc}</p>
               </div>
             ))}

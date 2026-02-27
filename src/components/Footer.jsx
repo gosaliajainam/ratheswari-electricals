@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaBolt, FaPhone, FaEnvelope, FaClock, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaPhone, FaEnvelope, FaClock, FaMapMarkerAlt } from 'react-icons/fa';
+import logoImg from '../assets/logo.png';
 
 const Footer = () => {
   return (
@@ -8,8 +9,12 @@ const Footer = () => {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-about">
-            <h3><FaBolt style={{ color: '#FF6B00', marginRight: 8 }} /> Ratheswari Electricals</h3>
-            <p className="footer-sanskrit">कौशलम् संगठनम् सेवा विश्वासः अस्माकं परिचयः।</p>
+            <img
+              src={logoImg}
+              alt="Ratheswari Electricals Pvt Ltd"
+              className="footer-logo"
+            />
+            <p className="footer-tagline">Skill &bull; Organization &bull; Service &bull; Trust</p>
             <p>
               A trusted service provider delivering professional electrical and facility
               maintenance solutions for Residential, Commercial, Corporate, and Government sectors.
