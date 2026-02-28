@@ -15,25 +15,25 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  color: #333;
+  color: #1a1a1a;
 }
 
 :root {
-  --primary: #FF6B00;
-  --primary-dark: #E05500;
-  --primary-light: #FF8C33;
-  --secondary: #1A1A2E;
-  --accent: #FFD700;
-  --dark: #0F0F23;
+  --primary: #FF1400;
+  --primary-dark: #D51000;
+  --primary-light: #FF4A3A;
+  --secondary: #2C2C2C;
+  --accent: #FFCD00;
+  --dark: #121212;
   --light: #F8F9FA;
   --gray: #6C757D;
   --white: #FFFFFF;
-  --gradient-primary: linear-gradient(135deg, #FF6B00 0%, #FFD700 100%);
-  --gradient-dark: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
-  --gradient-hero: linear-gradient(135deg, #0F0F23 0%, #1A1A2E 50%, #16213E 100%);
+  --gradient-primary: linear-gradient(135deg, #FF1400 0%, #FFCD00 100%);
+  --gradient-dark: linear-gradient(135deg, #2C2C2C 0%, #1A1A1A 100%);
+  --gradient-hero: linear-gradient(135deg, #121212 0%, #2C2C2C 50%, #1A1A1A 100%);
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
-  --shadow-orange: 0 10px 30px rgba(255, 107, 0, 0.3);
+  --shadow-primary: 0 10px 30px rgba(255, 20, 0, 0.3);
   --border-radius: 12px;
   --transition: all 0.3s ease;
 }
@@ -108,12 +108,12 @@ ul {
 .btn-primary {
   background: var(--gradient-primary);
   color: var(--white);
-  box-shadow: var(--shadow-orange);
+  box-shadow: var(--shadow-primary);
 }
 
 .btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 15px 40px rgba(255, 107, 0, 0.4);
+  box-shadow: 0 15px 40px rgba(255, 20, 0, 0.4);
 }
 
 .btn-outline {
