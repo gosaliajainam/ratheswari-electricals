@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/ratheswari-electricals/static/css/main.d64ca6fb.css",
+    "main.js": "/ratheswari-electricals/static/js/main.d9ffa9e8.js",
+    "static/js/453.177a3f68.chunk.js": "/ratheswari-electricals/static/js/453.177a3f68.chunk.js",
+    "static/media/logo.png": "/ratheswari-electricals/static/media/logo.60f3b3688aa199c4f0f0.png",
+    "index.html": "/ratheswari-electricals/index.html",
+    "main.d64ca6fb.css.map": "/ratheswari-electricals/static/css/main.d64ca6fb.css.map",
+    "main.d9ffa9e8.js.map": "/ratheswari-electricals/static/js/main.d9ffa9e8.js.map",
+    "453.177a3f68.chunk.js.map": "/ratheswari-electricals/static/js/453.177a3f68.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d64ca6fb.css",
+    "static/js/main.d9ffa9e8.js"
+  ]
+}
