@@ -1,0 +1,40 @@
+home
+about us
+projects
+	residensianal
+	corporate
+	tranky
+
+tenders
+	goverment
+	private
+	
+services
+	electrical
+	cctv
+	security
+	biomatrix
+	home automation
+	audio and visual  system
+	socity beutifacation
+	lift mantantion
+	pulmbing
+	desing
+	
+contact us
+feedback
+inquery
+
+
+font color 
+golden, yellow, red , blue, black, 
+
+bg white
+
+
+text: blue
+top bar: black
+
+
+
+
