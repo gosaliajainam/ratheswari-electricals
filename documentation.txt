@@ -36,5 +36,22 @@ text: blue
 top bar: black
 
 
+Years Experience -> 
 
+Projects Completed = 10
+Projects Ongoing = 15
+AMC Clients =  15
+Skilled Technicians =  50
+
+Header Menu  = #060645
+
+Technical Skill same as Electrical Services UI.
+Our Strength same as all heading
+Technical Skill same as Our Strength detail.
+header - footer color #060645 - background = white
+
+
+Aboutsus 
+
+Skill • Organization • Service • Trust = background white
 
