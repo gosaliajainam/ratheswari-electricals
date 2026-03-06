@@ -27,7 +27,7 @@ const Contact = () => {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" style={{ backgroundColor: 'var(--light)' }}>
         <div className="container">
           <div className="contact-grid">
             <div className="contact-info" data-aos="fade-right">

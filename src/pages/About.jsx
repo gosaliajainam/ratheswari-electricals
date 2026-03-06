@@ -49,7 +49,7 @@ const About = () => {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" style={{ backgroundColor: 'var(--light)' }}>
         <div className="container">
           <div className="about-intro">
             <div className="about-intro-image" data-aos="fade-right">
@@ -93,7 +93,7 @@ const About = () => {
         </div>
       </section>
 
-      <section className="section identity-section">
+      <section className="section identity-section" style={{ backgroundColor: 'var(--light)' }}>
         <div className="container">
           <div className="identity-motto" data-aos="fade-up">
             <p className="english-motto">Skill &bull; Organization &bull; Service &bull; Trust</p>
@@ -115,7 +115,7 @@ const About = () => {
                 style={{ background: 'white', border: '1px solid #eee' }}
               >
                 <div className="pillar-icon">{pillar.icon}</div>
-                <h3 style={{ color: '#1A1A2E' }}>{pillar.title}</h3>
+                <h3 style={{ color: '#2C2C2C' }}>{pillar.title}</h3>
                 <p className="pillar-subtitle">{pillar.subtitle}</p>
                 <p style={{ color: '#6C757D' }}>{pillar.desc}</p>
               </div>
@@ -145,7 +145,7 @@ const About = () => {
 
       <CounterSection />
 
-      <section className="section">
+      <section className="section" style={{ backgroundColor: 'var(--light)' }}>
         <div className="container">
           <div className="about-intro" style={{ gap: '50px' }}>
             <div data-aos="fade-right">
@@ -154,11 +154,11 @@ const About = () => {
               </div>
               {strengths.map((item, i) => (
                 <div className="strength-item" key={i} data-aos="fade-right" data-aos-delay={i * 50}
-                  style={{ background: 'rgba(255,107,0,0.05)', border: '1px solid rgba(255,107,0,0.1)', marginBottom: 10 }}>
+                  style={{ background: 'rgba(255, 20, 0,0.05)', border: '1px solid rgba(255, 20, 0,0.1)', marginBottom: 10 }}>
                   <div className="strength-check">
                     <FaCheck />
                   </div>
-                  <p style={{ color: '#333' }}>{item}</p>
+                  <p style={{ color: '#1a1a1a' }}>{item}</p>
                 </div>
               ))}
             </div>
@@ -176,12 +176,12 @@ const About = () => {
                 through ongoing support, maintenance, and service excellence.
               </p>
 
-              <h3 style={{ fontSize: '1.3rem', color: '#1A1A2E', marginBottom: 20 }}>Why Trust Us</h3>
+              <h3 style={{ fontSize: '1.3rem', color: '#2C2C2C', marginBottom: 20 }}>Why Trust Us</h3>
               <div className="trust-grid" style={{ gridTemplateColumns: '1fr' }}>
                 {trustItems.map((item, i) => (
                   <div className="trust-card" key={i} data-aos="fade-up" data-aos-delay={i * 80}
                     style={{ textAlign: 'left', display: 'flex', alignItems: 'center', gap: 15, padding: '15px 20px' }}>
-                    <span style={{ color: '#FF6B00', fontSize: '1.2rem' }}>{item.icon}</span>
+                    <span style={{ color: '#FF1400', fontSize: '1.2rem' }}>{item.icon}</span>
                     <h4>{item.title}</h4>
                   </div>
                 ))}
