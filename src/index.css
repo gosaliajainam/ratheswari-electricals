@@ -22,15 +22,15 @@ body {
   --primary: #FF1400;
   --primary-dark: #D51000;
   --primary-light: #FF4A3A;
-  --secondary: #2C2C2C;
+  --secondary: #060645;
   --accent: #FFCD00;
-  --dark: #121212;
+  --dark: #060645;
   --light: #F8F9FA;
   --gray: #6C757D;
   --white: #FFFFFF;
   --gradient-primary: linear-gradient(135deg, #FF1400 0%, #FFCD00 100%);
-  --gradient-dark: linear-gradient(135deg, #2C2C2C 0%, #1A1A1A 100%);
-  --gradient-hero: linear-gradient(135deg, #121212 0%, #2C2C2C 50%, #1A1A1A 100%);
+  --gradient-dark: linear-gradient(135deg, #ffffff 0%, #f0f0f8 100%);
+  --gradient-hero: linear-gradient(135deg, #ffffff 0%, #f5f5ff 50%, #ffffff 100%);
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
   --shadow-primary: 0 10px 30px rgba(255, 20, 0, 0.3);
@@ -118,25 +118,26 @@ ul {
 
 .btn-outline {
   background: transparent;
-  color: var(--white);
-  border: 2px solid var(--white);
+  color: #060645;
+  border: 2px solid #060645;
 }
 
 .btn-outline:hover {
-  background: var(--white);
-  color: var(--primary);
+  background: #060645;
+  color: #ffffff;
   transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(6, 6, 69, 0.3);
 }
 
 .btn-dark {
-  background: var(--secondary);
-  color: var(--white);
+  background: #060645;
+  color: #ffffff;
 }
 
 .btn-dark:hover {
-  background: var(--dark);
+  background: #0a0a6e;
   transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 10px 30px rgba(6, 6, 69, 0.3);
 }
 
 

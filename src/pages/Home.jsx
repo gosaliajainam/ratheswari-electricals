@@ -69,20 +69,6 @@ const Home = () => {
                 <FaFileAlt /> Get Free Quotation
               </Link>
             </div>
-            <div className="hero-stats">
-              <div className="hero-stat">
-                <h3>500+</h3>
-                <p>Projects Done</p>
-              </div>
-              <div className="hero-stat">
-                <h3>50+</h3>
-                <p>AMC Clients</p>
-              </div>
-              <div className="hero-stat">
-                <h3>10+</h3>
-                <p>Years Trust</p>
-              </div>
-            </div>
           </div>
 
           <div className="hero-image">

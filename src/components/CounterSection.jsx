@@ -3,10 +3,10 @@ import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
 
 const counters = [
-  { end: 500, suffix: '+', label: 'Projects Completed' },
-  { end: 50, suffix: '+', label: 'AMC Clients' },
-  { end: 100, suffix: '+', label: 'Skilled Technicians' },
-  { end: 10, suffix: '+', label: 'Years Experience' },
+  { end: 10, suffix: '+', label: 'Projects Completed' },
+  { end: 16, suffix: '+', label: 'Projects Ongoing' },
+  { end: 15, suffix: '+', label: 'AMC Clients' },
+  { end: 50, suffix: '+', label: 'Skilled Technicians' },
 ];
 
 const CounterSection = () => {

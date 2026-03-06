@@ -86,7 +86,7 @@ const Services = () => {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" style={{ backgroundColor: 'var(--light)' }}>
         <div className="container">
           <div className="section-title" data-aos="fade-up">
             <h2>What We Offer</h2>

@@ -49,7 +49,7 @@ const About = () => {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" style={{ backgroundColor: 'var(--light)' }}>
         <div className="container">
           <div className="about-intro">
             <div className="about-intro-image" data-aos="fade-right">
@@ -93,7 +93,7 @@ const About = () => {
         </div>
       </section>
 
-      <section className="section identity-section">
+      <section className="section identity-section" style={{ backgroundColor: 'var(--light)' }}>
         <div className="container">
           <div className="identity-motto" data-aos="fade-up">
             <p className="english-motto">Skill &bull; Organization &bull; Service &bull; Trust</p>
@@ -145,7 +145,7 @@ const About = () => {
 
       <CounterSection />
 
-      <section className="section">
+      <section className="section" style={{ backgroundColor: 'var(--light)' }}>
         <div className="container">
           <div className="about-intro" style={{ gap: '50px' }}>
             <div data-aos="fade-right">
