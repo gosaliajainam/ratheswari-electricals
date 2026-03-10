@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaPhone, FaEnvelope, FaClock, FaMapMarkerAlt } from 'react-icons/fa';
-import logoImg from '../assets/logo.png';
+import logoImg from '../assets/rateshwari-logo.jpeg';
 
 const Footer = () => {
   return (

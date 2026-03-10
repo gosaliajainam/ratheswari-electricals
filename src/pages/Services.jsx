@@ -40,13 +40,13 @@ const services = [
   {
     icon: <FaBuilding />,
     title: 'Lift Maintenance',
-    image: 'https://images.unsplash.com/photo-1567955041968-282af7cedda2?w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?w=600&q=80',
     items: ['Lift Annual Maintenance Contracts', 'Mechanical & electrical lift servicing', 'Safety inspections & compliance checks', 'Lift performance improvement support'],
   },
   {
     icon: <FaPaintBrush />,
     title: 'Society Beautification',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=600&q=80',
     items: ['Decorative Lighting', 'Compound & Garden Lighting', 'Festival Lighting Setup', 'Gardening and Plantation', 'Architecture Structure Designing'],
   },
   {
@@ -58,7 +58,7 @@ const services = [
   {
     icon: <FaSnowflake />,
     title: 'Air Conditioner Services',
-    image: 'https://images.unsplash.com/photo-1631545806609-05faf4dbe436?w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1625961332771-3f40b0e2bdcf?w=600&q=80',
     items: ['AC Installation', 'Gas Refilling', 'AC Repair & AMC', 'Commercial cooling systems', 'Energy efficiency optimization'],
   },
   {
