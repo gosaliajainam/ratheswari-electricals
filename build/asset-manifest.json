@@ -1,5 +1,8 @@
 {
   "files": {
+    "homepage": "https://gosaliajainam.github.io/ratheswari-electricals",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "main.css": "/ratheswari-electricals/static/css/main.6292a316.css",
     "main.js": "/ratheswari-electricals/static/js/main.b5c80053.js",
     "static/js/453.177a3f68.chunk.js": "/ratheswari-electricals/static/js/453.177a3f68.chunk.js",
