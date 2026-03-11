@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/ratheswari-electricals/static/css/main.0ea0938e.css",
-    "main.js": "/ratheswari-electricals/static/js/main.6d43c3c4.js",
+    "main.css": "/ratheswari-electricals/static/css/main.19958574.css",
+    "main.js": "/ratheswari-electricals/static/js/main.4e501f48.js",
     "static/js/453.177a3f68.chunk.js": "/ratheswari-electricals/static/js/453.177a3f68.chunk.js",
     "static/media/logo.png": "/ratheswari-electricals/static/media/logo.60f3b3688aa199c4f0f0.png",
     "static/media/rateshwari-logo.jpeg": "/ratheswari-electricals/static/media/rateshwari-logo.17a6451afd25fcd41f0e.jpeg",
     "index.html": "/ratheswari-electricals/index.html",
-    "main.0ea0938e.css.map": "/ratheswari-electricals/static/css/main.0ea0938e.css.map",
-    "main.6d43c3c4.js.map": "/ratheswari-electricals/static/js/main.6d43c3c4.js.map",
+    "main.19958574.css.map": "/ratheswari-electricals/static/css/main.19958574.css.map",
+    "main.4e501f48.js.map": "/ratheswari-electricals/static/js/main.4e501f48.js.map",
     "453.177a3f68.chunk.js.map": "/ratheswari-electricals/static/js/453.177a3f68.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0ea0938e.css",
-    "static/js/main.6d43c3c4.js"
+    "static/css/main.19958574.css",
+    "static/js/main.4e501f48.js"
   ]
 }
