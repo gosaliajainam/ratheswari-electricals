@@ -20,11 +20,17 @@ const Navbar = () => {
     setMenuOpen(false);
   }, [location]);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
+
   useEffect(() => {
     const handleClickOutside = (e) => {
       // Logic handled using only css or other way (keeping outer wrapper just in case)
       if (navRef.current && !navRef.current.contains(e.target)) {
-        setMenuOpen(false); 
+        setMenuOpen(false);
       }
     };
     document.addEventListener('click', handleClickOutside);
@@ -48,7 +54,7 @@ const Navbar = () => {
 
           <Link to="/services" className={location.pathname === '/services' ? 'active' : ''}>Services</Link>
 
-          <Link to="/contact" className={location.pathname === '/feedback' ? 'active' : ''}>Feedback</Link>
+          <Link to="/feedback" className={location.pathname === '/feedback' ? 'active' : ''}>Feedback</Link>
           <Link to="/contact" className={location.pathname === '/inquiry' ? 'active' : ''}>Inquiry</Link>
           <Link to="/contact" className={`nav-cta ${location.pathname === '/contact' ? 'active' : ''}`}>Contact Us</Link>
         </div>
