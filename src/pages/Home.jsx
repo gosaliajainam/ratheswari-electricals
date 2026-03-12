@@ -7,6 +7,7 @@ import {
   FaArrowRight, FaPhoneAlt, FaFileAlt
 } from 'react-icons/fa';
 import CounterSection from '../components/CounterSection';
+import electricalServicesImg from '../assets/images/electrical_services.jpg';
 
 const services = [
   { icon: <FaBolt />, title: 'Electrical Services', desc: 'Complete electrical installation, maintenance, wiring & panel solutions' },
@@ -51,7 +52,8 @@ const Home = () => {
               <FaBolt /> Trusted Electrical Service Provider
             </div>
             <h1>
-              <span>Ratheswari</span> Electricals<br />Pvt Ltd
+              <span className="hero-title-red">Ratheswari Electricals</span><br />
+              <span className="hero-title-yellow">Pvt Ltd</span>
             </h1>
             <p className="hero-tagline">
               Skill &bull; Organization &bull; Service &bull; Trust
@@ -75,7 +77,7 @@ const Home = () => {
             <div className="hero-image-glow"></div>
             <div className="hero-image-wrapper">
               <img
-                src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=80"
+                src={electricalServicesImg}
                 alt="Electrical work professional"
               />
             </div>

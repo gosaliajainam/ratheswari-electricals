@@ -55,7 +55,7 @@ const Navbar = () => {
           <Link to="/services" className={location.pathname === '/services' ? 'active' : ''}>Services</Link>
 
           <Link to="/feedback" className={location.pathname === '/feedback' ? 'active' : ''}>Feedback</Link>
-          <Link to="/contact" className={location.pathname === '/inquiry' ? 'active' : ''}>Inquiry</Link>
+
           <Link to="/contact" className={`nav-cta ${location.pathname === '/contact' ? 'active' : ''}`}>Contact Us</Link>
         </div>
 

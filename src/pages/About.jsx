@@ -6,6 +6,7 @@ import {
   FaLandmark, FaWarehouse, FaCheckCircle, FaArrowRight
 } from 'react-icons/fa';
 import CounterSection from '../components/CounterSection';
+import aboutHeroImg from '../assets/images/about_hero.jpg';
 
 const pillars = [
   { icon: <FaCogs />, title: 'Skill', subtitle: 'Skill & Expertise', desc: 'Qualified technicians and experienced professionals.' },
@@ -54,7 +55,7 @@ const About = () => {
           <div className="about-intro">
             <div className="about-intro-image" data-aos="fade-right">
               <img
-                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80"
+                src={aboutHeroImg}
                 alt="Electrical team at work"
               />
             </div>

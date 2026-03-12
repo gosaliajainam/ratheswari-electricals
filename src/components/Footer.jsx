@@ -61,7 +61,7 @@ const Footer = () => {
             </div>
             <div className="footer-contact-item">
               <FaMapMarkerAlt className="icon" />
-              <span>Gujarat, India</span>
+              <span>F10, Sonalika Park, near Dharti Cross Road, chandlodiya, Ahmedabad, Gujarat, India</span>
             </div>
           </div>
         </div>
