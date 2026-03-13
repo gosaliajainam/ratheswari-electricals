@@ -1,17 +1,27 @@
 {
   "files": {
-    "main.css": "/ratheswari-electricals/static/css/main.0ea0938e.css",
-    "main.js": "/ratheswari-electricals/static/js/main.6d43c3c4.js",
+    "main.css": "/ratheswari-electricals/static/css/main.c854cf94.css",
+    "main.js": "/ratheswari-electricals/static/js/main.96bf5305.js",
     "static/js/453.177a3f68.chunk.js": "/ratheswari-electricals/static/js/453.177a3f68.chunk.js",
+    "static/media/lift_maintenance.png": "/ratheswari-electricals/static/media/lift_maintenance.9706ecf47a291504557f.png",
+    "static/media/ac_services.png": "/ratheswari-electricals/static/media/ac_services.007e797f66100c6a9e4b.png",
     "static/media/logo.png": "/ratheswari-electricals/static/media/logo.60f3b3688aa199c4f0f0.png",
+    "static/media/about_hero.jpg": "/ratheswari-electricals/static/media/about_hero.6761500136386904c955.jpg",
     "static/media/rateshwari-logo.jpeg": "/ratheswari-electricals/static/media/rateshwari-logo.17a6451afd25fcd41f0e.jpeg",
+    "static/media/society_beautification.jpg": "/ratheswari-electricals/static/media/society_beautification.baf03bf987e868ad6c0d.jpg",
+    "static/media/cctv_installation.jpg": "/ratheswari-electricals/static/media/cctv_installation.9683d44617da5daf2122.jpg",
+    "static/media/electrical_services.jpg": "/ratheswari-electricals/static/media/electrical_services.66823bef5048ef4e2f18.jpg",
+    "static/media/solar_solutions.jpg": "/ratheswari-electricals/static/media/solar_solutions.f099f6ef064d8d161c52.jpg",
+    "static/media/plumbing.jpg": "/ratheswari-electricals/static/media/plumbing.cbc349f6559e7fdee7ac.jpg",
+    "static/media/audio_visual.jpg": "/ratheswari-electricals/static/media/audio_visual.d4c3c697ee91aebf6c31.jpg",
+    "static/media/biometric_home.jpg": "/ratheswari-electricals/static/media/biometric_home.002766465b8d23677532.jpg",
     "index.html": "/ratheswari-electricals/index.html",
-    "main.0ea0938e.css.map": "/ratheswari-electricals/static/css/main.0ea0938e.css.map",
-    "main.6d43c3c4.js.map": "/ratheswari-electricals/static/js/main.6d43c3c4.js.map",
+    "main.c854cf94.css.map": "/ratheswari-electricals/static/css/main.c854cf94.css.map",
+    "main.96bf5305.js.map": "/ratheswari-electricals/static/js/main.96bf5305.js.map",
     "453.177a3f68.chunk.js.map": "/ratheswari-electricals/static/js/453.177a3f68.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0ea0938e.css",
-    "static/js/main.6d43c3c4.js"
+    "static/css/main.c854cf94.css",
+    "static/js/main.96bf5305.js"
   ]
 }

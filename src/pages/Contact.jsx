@@ -59,7 +59,7 @@ const Contact = () => {
                 <div className="contact-detail-icon"><FaMapMarkerAlt /></div>
                 <div className="contact-detail-text">
                   <h4>Location</h4>
-                  <p>F10, Sonalika Park, near Dharti Cross Road, chandlodiya, Ahmedabad, Gujarat, India</p>
+                  <p>B-104,Shakti ETC,Vandematram road,Opp. Nayra Petrol pump, Vandematram, Gota, Ahmedabad-382481, Gujarat, India</p>
                 </div>
               </div>
             </div>
