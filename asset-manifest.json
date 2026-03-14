@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ratheswari-electricals/static/css/main.c854cf94.css",
-    "main.js": "/ratheswari-electricals/static/js/main.96bf5305.js",
+    "main.js": "/ratheswari-electricals/static/js/main.c9cad278.js",
     "static/js/453.177a3f68.chunk.js": "/ratheswari-electricals/static/js/453.177a3f68.chunk.js",
     "static/media/lift_maintenance.png": "/ratheswari-electricals/static/media/lift_maintenance.9706ecf47a291504557f.png",
     "static/media/ac_services.png": "/ratheswari-electricals/static/media/ac_services.007e797f66100c6a9e4b.png",
@@ -17,11 +17,11 @@
     "static/media/biometric_home.jpg": "/ratheswari-electricals/static/media/biometric_home.002766465b8d23677532.jpg",
     "index.html": "/ratheswari-electricals/index.html",
     "main.c854cf94.css.map": "/ratheswari-electricals/static/css/main.c854cf94.css.map",
-    "main.96bf5305.js.map": "/ratheswari-electricals/static/js/main.96bf5305.js.map",
+    "main.c9cad278.js.map": "/ratheswari-electricals/static/js/main.c9cad278.js.map",
     "453.177a3f68.chunk.js.map": "/ratheswari-electricals/static/js/453.177a3f68.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c854cf94.css",
-    "static/js/main.96bf5305.js"
+    "static/js/main.c9cad278.js"
   ]
 }
