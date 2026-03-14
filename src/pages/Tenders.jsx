@@ -33,7 +33,7 @@ const Tenders = () => {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" style={{ backgroundColor: 'var(--light)' }}>
         <div className="container">
           <div className="section-title" data-aos="fade-up">
             <h2>Our Tender Process</h2>
@@ -72,7 +72,7 @@ const Tenders = () => {
             <h2>Why Choose Us for Tenders?</h2>
           </div>
           <div className="strengths-grid">
-            {['Experienced Technical Team','Compliance with Tender Specifications','Proper Documentation & Reporting','Safety & Quality Assurance','On-Time Completion','Transparent Billing Process','AMC & Post-Project Support'].map((s, i) => (
+            {['Experienced Technical Team', 'Compliance with Tender Specifications', 'Proper Documentation & Reporting', 'Safety & Quality Assurance', 'On-Time Completion', 'Transparent Billing Process', 'AMC & Post-Project Support'].map((s, i) => (
               <div className="strength-item" key={i} data-aos="fade-right" data-aos-delay={i * 50}>
                 <div className="strength-check"><FaCheck /></div>
                 <p>{s}</p>

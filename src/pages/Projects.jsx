@@ -39,7 +39,7 @@ const Projects = () => {
 
           <div className="project-categories" data-aos="fade-up">
             {['Residential Societies', 'Corporate Offices', 'Commercial Buildings', 'Turnkey Projects'].map((cat, i) => (
-              <button className={`project-category-btn ${i === 0 ? 'active' : ''}`} key={i}>{cat}</button>
+              <button className={`project-category-btn`} key={i}>{cat}</button>
             ))}
           </div>
 

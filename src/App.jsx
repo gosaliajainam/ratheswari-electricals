@@ -10,6 +10,7 @@ import Services from './pages/Services';
 import Projects from './pages/Projects';
 import Tenders from './pages/Tenders';
 import Contact from './pages/Contact';
+import Feedback from './pages/Feedback';
 import ScrollToTop from './components/ScrollToTop';
 import WhatsAppButton from './components/WhatsAppButton';
 import './App.css';
@@ -36,6 +37,7 @@ function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/tenders" element={<Tenders />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/feedback" element={<Feedback />} />
         </Routes>
         <Footer />
         <WhatsAppButton />

@@ -27,7 +27,7 @@ const Contact = () => {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" style={{ backgroundColor: 'var(--light)' }}>
         <div className="container">
           <div className="contact-grid">
             <div className="contact-info" data-aos="fade-right">
@@ -59,7 +59,7 @@ const Contact = () => {
                 <div className="contact-detail-icon"><FaMapMarkerAlt /></div>
                 <div className="contact-detail-text">
                   <h4>Location</h4>
-                  <p>Gujarat, India</p>
+                  <p>B-104,Shakti ETC,Vandematram road,Opp. Nayra Petrol pump, Vandematram, Gota, Ahmedabad-382481, Gujarat, India</p>
                 </div>
               </div>
             </div>

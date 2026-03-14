@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaPhone, FaEnvelope, FaClock, FaMapMarkerAlt } from 'react-icons/fa';
-import logoImg from '../assets/logo.png';
+import logoImg from '../assets/rateshwari-logo.jpeg';
 
 const Footer = () => {
   return (
@@ -61,7 +61,7 @@ const Footer = () => {
             </div>
             <div className="footer-contact-item">
               <FaMapMarkerAlt className="icon" />
-              <span>Gujarat, India</span>
+              <span>B-104,Shakti ETC,Vandematram road,Opp. Nayra Petrol pump, Vandematram, Gota , Ahmedabad-382481, Gujarat, India</span>
             </div>
           </div>
         </div>
