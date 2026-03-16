@@ -5,14 +5,57 @@ import { FaPhone, FaEnvelope, FaClock, FaMapMarkerAlt, FaPaperPlane } from 'reac
 const Contact = () => {
   const [form, setForm] = useState({ name: '', phone: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [phoneError, setPhoneError] = useState('');
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    if (name === 'phone') {
+      const numericValue = value.replace(/[^0-9]/g, '');
+      setForm({ ...form, phone: numericValue });
+      if (numericValue.length > 0 && numericValue.length !== 10) {
+        setPhoneError('Phone number must be exactly 10 digits');
+      } else {
+        setPhoneError('');
+      }
+    } else {
+      setForm({ ...form, [name]: value });
+    }
+  };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
-    setForm({ name: '', phone: '', email: '', message: '' });
+    if (form.phone.length !== 10) {
+      setPhoneError('Phone number must be exactly 10 digits');
+      return;
+    }
+    setLoading(true);
+    setError('');
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/info@ratheswarielectricals.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          Name: form.name,
+          Phone: form.phone,
+          Email: form.email,
+          Message: form.message,
+          _subject: 'New Inquiry from Website',
+        }),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+        setTimeout(() => setSubmitted(false), 3000);
+        setForm({ name: '', phone: '', email: '', message: '' });
+      } else {
+        setError('Failed to send inquiry. Please try again.');
+      }
+    } catch {
+      setError('Failed to send inquiry. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -71,6 +114,11 @@ const Contact = () => {
                   Thank you! Your inquiry has been submitted successfully.
                 </div>
               )}
+              {error && (
+                <div style={{ padding: '12px 20px', background: '#f8d7da', color: '#721c24', borderRadius: 8, marginBottom: 20, fontWeight: 500 }}>
+                  {error}
+                </div>
+              )}
               <form onSubmit={handleSubmit}>
                 <div className="form-row">
                   <div className="form-group">
@@ -79,7 +127,8 @@ const Contact = () => {
                   </div>
                   <div className="form-group">
                     <label>Phone</label>
-                    <input type="tel" name="phone" value={form.phone} onChange={handleChange} placeholder="Your Phone" required />
+                    <input type="tel" name="phone" value={form.phone} onChange={handleChange} placeholder="Your Phone (10 digits)" required maxLength={10} />
+                    {phoneError && <span style={{ color: '#dc3545', fontSize: '0.85rem', marginTop: 4, display: 'block' }}>{phoneError}</span>}
                   </div>
                 </div>
                 <div className="form-group">
@@ -90,8 +139,8 @@ const Contact = () => {
                   <label>Message</label>
                   <textarea name="message" value={form.message} onChange={handleChange} placeholder="Your Message" required></textarea>
                 </div>
-                <button type="submit" className="form-submit">
-                  <FaPaperPlane style={{ marginRight: 8 }} /> Send Inquiry
+                <button type="submit" className="form-submit" disabled={loading}>
+                  <FaPaperPlane style={{ marginRight: 8 }} /> {loading ? 'Sending...' : 'Send Inquiry'}
                 </button>
               </form>
             </div>
