@@ -5,21 +5,125 @@ import {
   FaUser, FaEnvelope, FaPhone, FaBuilding, FaTools
 } from 'react-icons/fa';
 
+const validationRules = {
+  name: {
+    required: true,
+    validate: (v) => v.trim().length >= 2,
+    message: 'Name is required (minimum 2 characters)',
+  },
+  email: {
+    required: true,
+    validate: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
+    message: 'Please enter a valid email address',
+  },
+  phone: {
+    required: true,
+    validate: (v) => /^\d{10}$/.test(v),
+    message: 'Phone number must be exactly 10 digits (numbers only)',
+  },
+  service: {
+    required: true,
+    validate: (v) => v.trim().length > 0,
+    message: 'Please select a service',
+  },
+  feedback: {
+    required: true,
+    validate: (v) => v.trim().length >= 10,
+    message: 'Feedback is required (minimum 10 characters)',
+  },
+};
+
 const Feedback = () => {
   const [form, setForm] = useState({
     name: '', email: '', phone: '', company: '', service: '', rating: 0, feedback: ''
   });
+  const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
   const [hoverRating, setHoverRating] = useState(0);
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  const validateField = (name, value) => {
+    const rule = validationRules[name];
+    if (!rule) return '';
+    if (rule.required && !value.toString().trim()) return rule.message;
+    if (!rule.validate(value.toString())) return rule.message;
+    return '';
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    if (name === 'phone') {
+      const numericOnly = value.replace(/\D/g, '').slice(0, 10);
+      setForm((prev) => ({ ...prev, phone: numericOnly }));
+      if (touched[name]) {
+        setErrors((prev) => ({ ...prev, phone: validateField('phone', numericOnly) }));
+      }
+      return;
+    }
+    setForm((prev) => ({ ...prev, [name]: value }));
+    if (touched[name]) {
+      setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }));
+    }
+  };
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    setTouched((prev) => ({ ...prev, [name]: true }));
+    setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }));
+  };
+
   const handleStarClick = (rating) => setForm({ ...form, rating });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
-    setForm({ name: '', email: '', phone: '', company: '', service: '', rating: 0, feedback: '' });
+
+    const newErrors = {};
+    Object.keys(validationRules).forEach((field) => {
+      const error = validateField(field, form[field]);
+      if (error) newErrors[field] = error;
+    });
+
+    setErrors(newErrors);
+    setTouched({ name: true, email: true, phone: true, service: true, feedback: true });
+
+    if (Object.keys(newErrors).length > 0) return;
+
+    setLoading(true);
+    setSubmitError('');
+
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/info@ratheswarielectricals.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          Name: form.name,
+          Email: form.email,
+          Phone: form.phone,
+          Company: form.company || 'N/A',
+          Service: form.service,
+          Rating: `${form.rating}/5 (${getRatingLabel(form.rating) || 'Not rated'})`,
+          Feedback: form.feedback,
+          _subject: 'New Feedback from Website',
+          _template: 'table',
+        }),
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+        setTimeout(() => setSubmitted(false), 4000);
+        setForm({ name: '', email: '', phone: '', company: '', service: '', rating: 0, feedback: '' });
+        setErrors({});
+        setTouched({});
+      } else {
+        setSubmitError('Failed to send feedback. Please try again.');
+      }
+    } catch {
+      setSubmitError('Failed to send feedback. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const getRatingLabel = (r) => {
@@ -106,31 +210,43 @@ const Feedback = () => {
                 </div>
               )}
 
+              {submitError && (
+                <div style={{ padding: '12px 20px', background: '#f8d7da', color: '#721c24', borderRadius: 8, marginBottom: 20, fontWeight: 500 }}>
+                  {submitError}
+                </div>
+              )}
+
               <form onSubmit={handleSubmit}>
                 <div className="form-row">
-                  <div className="form-group">
+                  <div className={`form-group ${errors.name && touched.name ? 'has-error' : ''}`}>
                     <label><FaUser className="fb-label-icon" /> Your Name *</label>
                     <input
                       type="text" name="name" value={form.name}
-                      onChange={handleChange} placeholder="e.g. Rajesh Patel" required
+                      onChange={handleChange} onBlur={handleBlur}
+                      placeholder="e.g. Rajesh Patel"
                     />
+                    {errors.name && touched.name && <span className="field-error">{errors.name}</span>}
                   </div>
-                  <div className="form-group">
+                  <div className={`form-group ${errors.email && touched.email ? 'has-error' : ''}`}>
                     <label><FaEnvelope className="fb-label-icon" /> Email Address *</label>
                     <input
                       type="email" name="email" value={form.email}
-                      onChange={handleChange} placeholder="your@email.com" required
+                      onChange={handleChange} onBlur={handleBlur}
+                      placeholder="your@email.com"
                     />
+                    {errors.email && touched.email && <span className="field-error">{errors.email}</span>}
                   </div>
                 </div>
 
                 <div className="form-row">
-                  <div className="form-group">
-                    <label><FaPhone className="fb-label-icon" /> Phone Number</label>
+                  <div className={`form-group ${errors.phone && touched.phone ? 'has-error' : ''}`}>
+                    <label><FaPhone className="fb-label-icon" /> Phone Number *</label>
                     <input
                       type="tel" name="phone" value={form.phone}
-                      onChange={handleChange} placeholder="e.g. 9876543210"
+                      onChange={handleChange} onBlur={handleBlur}
+                      placeholder="e.g. 9876543210" maxLength="10"
                     />
+                    {errors.phone && touched.phone && <span className="field-error">{errors.phone}</span>}
                   </div>
                   <div className="form-group">
                     <label><FaBuilding className="fb-label-icon" /> Company / Organization</label>
@@ -141,11 +257,11 @@ const Feedback = () => {
                   </div>
                 </div>
 
-                <div className="form-group">
+                <div className={`form-group ${errors.service && touched.service ? 'has-error' : ''}`}>
                   <label><FaTools className="fb-label-icon" /> Service Used *</label>
                   <select
                     name="service" value={form.service}
-                    onChange={handleChange} required
+                    onChange={handleChange} onBlur={handleBlur}
                     className="fb-select"
                   >
                     <option value="">Select the service you used</option>
@@ -157,6 +273,7 @@ const Feedback = () => {
                     <option>Industrial Electrical</option>
                     <option>Other</option>
                   </select>
+                  {errors.service && touched.service && <span className="field-error">{errors.service}</span>}
                 </div>
 
                 {/* STAR RATING */}
@@ -184,17 +301,19 @@ const Feedback = () => {
                   </div>
                 </div>
 
-                <div className="form-group">
+                <div className={`form-group ${errors.feedback && touched.feedback ? 'has-error' : ''}`}>
                   <label>Your Feedback *</label>
                   <textarea
-                    name="feedback" value={form.feedback} onChange={handleChange}
+                    name="feedback" value={form.feedback}
+                    onChange={handleChange} onBlur={handleBlur}
                     placeholder="Tell us about your experience with our team and services..."
-                    rows="5" required
+                    rows="5"
                   />
+                  {errors.feedback && touched.feedback && <span className="field-error">{errors.feedback}</span>}
                 </div>
 
-                <button type="submit" className="form-submit">
-                  <FaPaperPlane style={{ marginRight: 8 }} /> Submit Feedback
+                <button type="submit" className="form-submit" disabled={loading}>
+                  <FaPaperPlane style={{ marginRight: 8 }} /> {loading ? 'Sending...' : 'Submit Feedback'}
                 </button>
               </form>
             </div>

@@ -1300,6 +1300,21 @@
   resize: vertical;
 }
 
+.form-group.has-error input,
+.form-group.has-error textarea,
+.form-group.has-error select {
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.12);
+}
+
+.field-error {
+  display: block;
+  color: #e74c3c;
+  font-size: 0.8rem;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;

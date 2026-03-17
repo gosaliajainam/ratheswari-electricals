@@ -2,36 +2,84 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaPhone, FaEnvelope, FaClock, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa';
 
+const validationRules = {
+  name: {
+    required: true,
+    validate: (v) => v.trim().length >= 2,
+    message: 'Name is required (minimum 2 characters)',
+  },
+  phone: {
+    required: true,
+    validate: (v) => /^\d{10}$/.test(v),
+    message: 'Phone number must be exactly 10 digits (numbers only)',
+  },
+  email: {
+    required: true,
+    validate: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
+    message: 'Please enter a valid email address',
+  },
+  message: {
+    required: true,
+    validate: (v) => v.trim().length >= 10,
+    message: 'Message is required (minimum 10 characters)',
+  },
+};
+
 const Contact = () => {
   const [form, setForm] = useState({ name: '', phone: '', email: '', message: '' });
+  const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-  const [phoneError, setPhoneError] = useState('');
+  const [submitError, setSubmitError] = useState('');
+
+  const validateField = (name, value) => {
+    const rule = validationRules[name];
+    if (!rule) return '';
+    if (rule.required && !value.toString().trim()) return rule.message;
+    if (!rule.validate(value.toString())) return rule.message;
+    return '';
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === 'phone') {
-      const numericValue = value.replace(/[^0-9]/g, '');
-      setForm({ ...form, phone: numericValue });
-      if (numericValue.length > 0 && numericValue.length !== 10) {
-        setPhoneError('Phone number must be exactly 10 digits');
-      } else {
-        setPhoneError('');
+      const numericOnly = value.replace(/\D/g, '').slice(0, 10);
+      setForm((prev) => ({ ...prev, phone: numericOnly }));
+      if (touched[name]) {
+        setErrors((prev) => ({ ...prev, phone: validateField('phone', numericOnly) }));
       }
-    } else {
-      setForm({ ...form, [name]: value });
+      return;
     }
+    setForm((prev) => ({ ...prev, [name]: value }));
+    if (touched[name]) {
+      setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }));
+    }
+  };
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    setTouched((prev) => ({ ...prev, [name]: true }));
+    setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (form.phone.length !== 10) {
-      setPhoneError('Phone number must be exactly 10 digits');
-      return;
-    }
+
+    const newErrors = {};
+    Object.keys(validationRules).forEach((field) => {
+      const error = validateField(field, form[field]);
+      if (error) newErrors[field] = error;
+    });
+
+    setErrors(newErrors);
+    setTouched({ name: true, phone: true, email: true, message: true });
+
+    if (Object.keys(newErrors).length > 0) return;
+
     setLoading(true);
-    setError('');
+    setSubmitError('');
+
     try {
       const res = await fetch('https://formsubmit.co/ajax/info@ratheswarielectricals.com', {
         method: 'POST',
@@ -42,17 +90,20 @@ const Contact = () => {
           Email: form.email,
           Message: form.message,
           _subject: 'New Inquiry from Website',
+          _template: 'table',
         }),
       });
       if (res.ok) {
         setSubmitted(true);
         setTimeout(() => setSubmitted(false), 3000);
         setForm({ name: '', phone: '', email: '', message: '' });
+        setErrors({});
+        setTouched({});
       } else {
-        setError('Failed to send inquiry. Please try again.');
+        setSubmitError('Failed to send inquiry. Please try again.');
       }
     } catch {
-      setError('Failed to send inquiry. Please try again.');
+      setSubmitError('Failed to send inquiry. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -109,35 +160,57 @@ const Contact = () => {
 
             <div className="contact-form" data-aos="fade-left">
               <h3>Send Us Inquiry</h3>
+              <p style={{ color: 'var(--gray)', fontSize: '0.9rem', marginBottom: 24 }}>
+                Fields marked with * are required
+              </p>
               {submitted && (
                 <div style={{ padding: '12px 20px', background: '#d4edda', color: '#155724', borderRadius: 8, marginBottom: 20, fontWeight: 500 }}>
                   Thank you! Your inquiry has been submitted successfully.
                 </div>
               )}
-              {error && (
+              {submitError && (
                 <div style={{ padding: '12px 20px', background: '#f8d7da', color: '#721c24', borderRadius: 8, marginBottom: 20, fontWeight: 500 }}>
-                  {error}
+                  {submitError}
                 </div>
               )}
               <form onSubmit={handleSubmit}>
                 <div className="form-row">
-                  <div className="form-group">
-                    <label>Name</label>
-                    <input type="text" name="name" value={form.name} onChange={handleChange} placeholder="Your Name" required />
+                  <div className={`form-group ${errors.name && touched.name ? 'has-error' : ''}`}>
+                    <label>Name *</label>
+                    <input
+                      type="text" name="name" value={form.name}
+                      onChange={handleChange} onBlur={handleBlur}
+                      placeholder="Your Name"
+                    />
+                    {errors.name && touched.name && <span className="field-error">{errors.name}</span>}
                   </div>
-                  <div className="form-group">
-                    <label>Phone</label>
-                    <input type="tel" name="phone" value={form.phone} onChange={handleChange} placeholder="Your Phone (10 digits)" required maxLength={10} />
-                    {phoneError && <span style={{ color: '#dc3545', fontSize: '0.85rem', marginTop: 4, display: 'block' }}>{phoneError}</span>}
+                  <div className={`form-group ${errors.phone && touched.phone ? 'has-error' : ''}`}>
+                    <label>Phone *</label>
+                    <input
+                      type="tel" name="phone" value={form.phone}
+                      onChange={handleChange} onBlur={handleBlur}
+                      placeholder="Your Phone (10 digits)" maxLength={10}
+                    />
+                    {errors.phone && touched.phone && <span className="field-error">{errors.phone}</span>}
                   </div>
                 </div>
-                <div className="form-group">
-                  <label>Email</label>
-                  <input type="email" name="email" value={form.email} onChange={handleChange} placeholder="Your Email" required />
+                <div className={`form-group ${errors.email && touched.email ? 'has-error' : ''}`}>
+                  <label>Email *</label>
+                  <input
+                    type="email" name="email" value={form.email}
+                    onChange={handleChange} onBlur={handleBlur}
+                    placeholder="Your Email"
+                  />
+                  {errors.email && touched.email && <span className="field-error">{errors.email}</span>}
                 </div>
-                <div className="form-group">
-                  <label>Message</label>
-                  <textarea name="message" value={form.message} onChange={handleChange} placeholder="Your Message" required></textarea>
+                <div className={`form-group ${errors.message && touched.message ? 'has-error' : ''}`}>
+                  <label>Message *</label>
+                  <textarea
+                    name="message" value={form.message}
+                    onChange={handleChange} onBlur={handleBlur}
+                    placeholder="Your Message"
+                  ></textarea>
+                  {errors.message && touched.message && <span className="field-error">{errors.message}</span>}
                 </div>
                 <button type="submit" className="form-submit" disabled={loading}>
                   <FaPaperPlane style={{ marginRight: 8 }} /> {loading ? 'Sending...' : 'Send Inquiry'}
