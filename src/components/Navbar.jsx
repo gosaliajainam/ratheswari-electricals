@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import logoImg from '../assets/logo.png';
 
@@ -6,6 +6,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const navRef = useRef();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,34 +20,43 @@ const Navbar = () => {
     setMenuOpen(false);
   }, [location]);
 
-  const navItems = [
-    { path: '/', label: 'Home' },
-    { path: '/about', label: 'About' },
-    { path: '/services', label: 'Services' },
-    { path: '/projects', label: 'Projects' },
-    { path: '/tenders', label: 'Tenders' },
-  ];
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      // Logic handled using only css or other way (keeping outer wrapper just in case)
+      if (navRef.current && !navRef.current.contains(e.target)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
 
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} ref={navRef}>
       <div className="container">
         <Link to="/" className="nav-logo">
           <img src={logoImg} alt="Ratheswari Electricals Pvt Ltd" className="nav-logo-img" />
         </Link>
 
         <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
-          {navItems.map((item) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              className={location.pathname === item.path ? 'active' : ''}
-            >
-              {item.label}
-            </Link>
-          ))}
-          <Link to="/contact" className="nav-cta">
-            Contact Us
-          </Link>
+          <Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link>
+          <Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>About Us</Link>
+
+          <Link to="/projects" className={location.pathname === '/projects' ? 'active' : ''}>Projects</Link>
+
+          <Link to="/tenders" className={location.pathname === '/tenders' ? 'active' : ''}>Tenders</Link>
+
+          <Link to="/services" className={location.pathname === '/services' ? 'active' : ''}>Services</Link>
+
+          <Link to="/feedback" className={location.pathname === '/feedback' ? 'active' : ''}>Feedback</Link>
+
+          <Link to="/contact" className={`nav-cta ${location.pathname === '/contact' ? 'active' : ''}`}>Contact Us</Link>
         </div>
 
         <button
